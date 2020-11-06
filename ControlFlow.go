@@ -4,7 +4,6 @@ package main
 
 import (
 	"fmt"
-	"strings"
 )
 
 var (
@@ -17,14 +16,24 @@ var (
 )
 
 func main() {
-	for _, user := range users {
-		a := (strings.Count(user, "a"))
-		e := (strings.Count(user, "e"))
-		i := (strings.Count(user, "i"))
-		o := (strings.Count(user, "o"))
-		u := (strings.Count(user, "u"))
 
-		sum := (a + e + (i * 2) + (o * 3) + (u * 4))
+	for _, user := range users {
+		sum := 0
+		for i := 0; i < len(user); i++ {
+			switch string(user[i]) {
+			case "a", "A":
+				sum += 1
+			case "e", "E":
+				sum += 1
+			case "i":
+				sum += 2
+			case "o", "O":
+				sum += 3
+			case "u", "U":
+				sum += 4
+			}
+
+		}
 		if sum > 10 {
 			sum = 10
 		}
